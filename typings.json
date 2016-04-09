@@ -1,0 +1,10 @@
+{
+  "name": "ironcrux",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "koa": "registry:dt/koa#2.0.0+20160317120654",
+    "koa-router": "registry:dt/koa-router#7.0.0+20160314083221",
+    "node": "registry:dt/node#4.0.0+20160330064709"
+  }
+}
