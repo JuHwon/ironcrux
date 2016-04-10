@@ -3,9 +3,12 @@
   "version": false,
   "dependencies": {},
   "ambientDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160328125810",
+    "jquery": "registry:dt/jquery#1.10.0+20160316155526",
     "koa": "registry:dt/koa#2.0.0+20160317120654",
     "koa-router": "registry:dt/koa-router#7.0.0+20160314083221",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
-    "node": "registry:dt/node#4.0.0+20160330064709"
+    "node": "registry:dt/node#4.0.0+20160330064709",
+    "toastr": "registry:dt/toastr#2.0.1+20160316155526"
   }
 }
