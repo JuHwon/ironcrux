@@ -1,6 +1,6 @@
 namespace app {
-    'use strict'
-    
+    'use strict';
+
     angular.module('app', [
         'app.core',
         'app.layout'

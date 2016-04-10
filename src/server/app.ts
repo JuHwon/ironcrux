@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import * as Koa from 'koa';
 import * as KoaRouter from 'koa-router';
@@ -12,7 +12,7 @@ var port = 3000;
 app.use(RequestTime('X-Response-Time'));
 
 app.use(async (ctx: Koa.Context) => {
-    ctx.body = "Hello World\n";
+    ctx.body = 'Hello World\n';
 });
 
 app.listen(port, function() {

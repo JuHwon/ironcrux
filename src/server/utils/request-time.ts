@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import * as Koa from 'koa';
 import * as Moment from 'moment';
@@ -9,5 +9,5 @@ export default function requestTime(headerName: String) {
         await next();
         var ms: number = Moment.utc().diff(start);
         ctx.set(headerName, ms + 'ms');
-    }
+    };
 }
