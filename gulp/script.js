@@ -5,7 +5,7 @@ var $ = require('gulp-load-plugins')();
 var config = require('./config');
 var helper = require('./helper');
 
-gulp.task('tscompile', ['tscompile-server', 'tscompile-client'], function() {});
+gulp.task('tscompile', ['tscompile-server', 'tscompile-client']);
 
 /**
  * TypeScript Client
@@ -14,9 +14,15 @@ var tsPathClient = config.client + './**/*.ts';
 
 gulp.task('tscompile-client', ['tslint-client'], function() {
     var tsProject = $.typescript.createProject(config.client+'tsconfig.json');
+    var srcMapsOptions = {
+        sourceRoot: function(file){ return file.cwd + '/' + config.client; }
+    };
     return gulp.src(tsPathClient)
+        .pipe($.sourcemaps.init())
         .pipe($.typescript(tsProject))
-        .on('error', helper.errorHandler('TS Compile Client'));
+        .on('error', helper.errorHandler('TS Compile Client'))
+        .pipe($.sourcemaps.write('.', srcMapsOptions))
+        .pipe(gulp.dest(config.client));
 });
 
 gulp.task('tslint-client', function() {
@@ -32,10 +38,16 @@ gulp.task('tslint-client', function() {
 var tsPathServer = config.server + './**/*.ts';
 
 gulp.task('tscompile-server', ['tslint-server'], function() {
-    var tsProject = $.typescript.createProject(config.server+'tsconfig.json');
+    var tsProject = $.typescript.createProject(config.server + 'tsconfig.json');
+    var srcMapsOptions = {
+        sourceRoot: function(file){ return file.cwd + '/' + config.server; }
+    };
     return gulp.src(tsPathServer)
+        .pipe($.sourcemaps.init())
         .pipe($.typescript(tsProject))
-        .on('error', helper.errorHandler('TS Compile Server'));
+        .on('error', helper.errorHandler('TS Compile Server'))
+        .pipe($.sourcemaps.write('.', srcMapsOptions))
+        .pipe(gulp.dest(config.server));
 });
 
 gulp.task('tslint-server', function() {

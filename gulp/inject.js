@@ -1,12 +1,14 @@
+'use strict';
+
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var args = require('yargs').argv;
 var config = require('./config');
 var helper = require('./helper');
 
-gulp.task('inject', ['inject-js'], function() {});
+gulp.task('inject', ['inject-js']);
 
-gulp.task('inject-js', function() {
+gulp.task('inject-js', ['tscompile-client'], function() {
     helper.log('Injecting JavaScript files into the html.');
 
     var wiredep = require('wiredep').stream;

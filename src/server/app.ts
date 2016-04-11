@@ -3,11 +3,14 @@
 import * as Koa from 'koa';
 import * as KoaRouter from 'koa-router';
 import RequestTime from './utils/request-time';
+import * as path from 'path';
 
 var app: Koa = new Koa();
 var router: KoaRouter = new KoaRouter();
 
-var port = 3000;
+var rootDir = path.join(__dirname, '../../');
+var port = process.env.PORT || 8001;
+var environment = process.env.NODE_ENV || 'dev';
 
 app.use(RequestTime('X-Response-Time'));
 

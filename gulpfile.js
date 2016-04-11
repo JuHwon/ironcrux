@@ -18,12 +18,19 @@ walk.walkSync('./gulp', {
     filters: '*.js',
     listeners: {
         file: function (root, fileStats, next) {
-            console.log(fileStats.name);
             require('./gulp/' + fileStats.name);
             next();
         }
     }
-})
+});
+
+// outdated wrench version
+// var wrench = require('wrench');
+// wrench.readdirSyncRecursive('./gulp').filter(function(file) {
+//     return (/\.(js|coffee)$/i).test(file);
+// }).map(function(file) {
+//     require('./gulp/' + file);
+// });
 
 /**
  * List the available gulp tasks
