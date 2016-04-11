@@ -7,18 +7,23 @@
 'use strict';
 
 var gulp = require('gulp');
-var wrench = require('wrench');
+var walk = require('walk');
 var $ = require('gulp-load-plugins')();
 
 /**
- *  This will load all js or coffee files in the gulp directory
+ *  This will load all js files in the gulp directory
  *  in order to load all gulp tasks
  */
-wrench.readdirSyncRecursive('./gulp').filter(function(file) {
-    return (/\.(js|coffee)$/i).test(file);
-}).map(function(file) {
-    require('./gulp/' + file);
-});
+walk.walkSync('./gulp', { 
+    filters: '*.js',
+    listeners: {
+        file: function (root, fileStats, next) {
+            console.log(fileStats.name);
+            require('./gulp/' + fileStats.name);
+            next();
+        }
+    }
+})
 
 /**
  * List the available gulp tasks
