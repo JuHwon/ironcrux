@@ -4,12 +4,16 @@
   "dependencies": {},
   "ambientDependencies": {
     "angular": "registry:dt/angular#1.5.0+20160328125810",
+    "chai": "registry:dt/chai#3.4.0+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160316155526",
     "koa": "registry:dt/koa#2.0.0+20160317120654",
     "koa-router": "registry:dt/koa-router#7.0.0+20160314083221",
     "koa-static": "registry:dt/koa-static#2.0.0+20160401073454",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
     "moment-node": "registry:dt/moment-node#2.11.1+20160329220348",
     "node": "registry:dt/node#4.0.0+20160330064709",
+    "superagent": "registry:dt/superagent#1.4.0+20160317120654",
+    "supertest": "registry:dt/supertest#1.1.0+20160317120654",
     "toastr": "registry:dt/toastr#2.0.1+20160316155526"
   }
 }

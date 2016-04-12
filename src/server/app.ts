@@ -7,7 +7,7 @@ import * as path from 'path';
 import serve = require('koa-static');
 const convert = require('koa-convert');
 
-var app: Koa = new Koa();
+var app: Koa = module.exports = new Koa();
 
 var router: KoaRouter = new KoaRouter();
 

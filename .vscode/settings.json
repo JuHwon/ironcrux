@@ -4,7 +4,7 @@
         "**/.git": true,
         "**/.DS_Store": true,
         "**/*js.map": true,
-        "src/**/*js": {"when": "$(basename).ts"}        
+        "**/*js": {"when": "$(basename).ts"}        
     },
     "jscs.enable": false,
     "jshint.enable": false

@@ -26,16 +26,19 @@
 ## Getting Started
 
 1. Download the repository 
+
     ```bash
     git clone git@github.com:JuHwon/ironcrux.git
     ```
 2. Install project dependencies
+
     ```bash
     npm install
     typings install
     bower install
     ```
 3. Run application
+
     ```bash
     gulp serve-dev
     ```
