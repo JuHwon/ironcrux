@@ -15,7 +15,7 @@ namespace app.layout {
         isBusy = true;
 
         hideSplash() {
-            this.$timeout(() => { this.$rootScope.showSplash = false; }, 1000);
+            this.$timeout(() => { this.$rootScope.hideSlpash = true; }, 1000);
         }
 
     }

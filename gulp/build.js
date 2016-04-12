@@ -25,13 +25,3 @@ gulp.task('build', ['optimize'], function() {
 gulp.task('optimize', ['inject', 'tscompile', 'test'], function() {
     helper.log("The task `optimize` is not implemented yet.");
 });
-
-
-/**
- * serve the dev environment
- * --debug-brk or --debug
- * --nosync
- */
-gulp.task('serve-dev', ['build'], function() {
-    helper.serve(true /*isDev*/);
-});

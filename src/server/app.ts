@@ -5,6 +5,7 @@ import * as KoaRouter from 'koa-router';
 import RequestTime from './utils/request-time';
 import * as path from 'path';
 import serve = require('koa-static');
+const convert = require('koa-convert');
 
 var app: Koa = new Koa();
 
@@ -23,15 +24,11 @@ switch (environment) {
 
     default:
         console.log('*** DEV ***');
-        app.use(serve(path.join(rootDir, './src/client')));
-        app.use(serve(path.join(rootDir, './')));
-        app.use(serve(path.join(rootDir, './tmp')));
+        app.use(convert(serve(path.join(rootDir, './src/client'))));
+        app.use(convert(serve(path.join(rootDir, './'))));
+        app.use(convert(serve(path.join(rootDir, './tmp'))));
         break;
 }
-
-app.use(async (ctx: Koa.Context) => {
-    ctx.body = 'Hello World\n';
-});
 
 app.listen(port, function() {
    console.log(`Koa server listening on port ${port}...`);

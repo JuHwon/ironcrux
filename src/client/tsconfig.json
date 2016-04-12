@@ -3,7 +3,7 @@
     "noImplicitAny": true,
     "removeComments": false,
     "preserveConstEnums": true,
-    "target": "ES5",
+    "target": "es5",
     "sourceMap": true,
     "listFiles": false
   }
