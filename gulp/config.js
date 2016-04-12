@@ -6,12 +6,14 @@ module.exports = (function() {
     var server = './src/server/';
     var ngApp = client + 'app/';
     var temp = './.tmp/';
+    var src = 'src/';
     
     var config = {
         client: client,
         server: server,
         temp: temp,
         index: client + 'index.html',
+        source: src,
         
         allTs: [
             client + '**/*.ts',
@@ -47,12 +49,12 @@ module.exports = (function() {
         },
                 
         nodeServer: server + 'app.js',
-        defaultPort: '3001',
+        defaultPort: '8001',
         
         /**
          * browser sync
          */
-        browserReloadDelay: 1000,
+        browserReloadDelay: 1000, //1000
         
         /**
          * specs.html, our HTML spec runner

@@ -28,22 +28,23 @@ module.exports = (function() {
      * @param  {Boolean} specRunner - server spec runner html
      */
     function serve(isDev, specRunner) {
-        var debugMode = '--debug';
         var nodeOptions = getNodeOptions(isDev);
 
-        nodeOptions.nodeArgs = [debugMode + '=5858', '--harmony'];
+        if(isDev) {
+            nodeOptions.nodeArgs = ['--debug=5858'];    
+        }        
 
         if (args.verbose) {
             console.log(nodeOptions);
         }
 
         return $.nodemon(nodeOptions)
-            .on('restart', ['tscompile'], function(ev) {
+            .on('restart', [], function(ev) {
                 log('*** nodemon restarted');
                 log('files changed:\n' + ev);
                 setTimeout(function() {
                     browserSync.notify('reloading now ...');
-                    browserSync.reload({ stream: false });
+                    browserSync.reload();
                 }, config.browserReloadDelay);
             })
             .on('start', function () {
@@ -69,7 +70,7 @@ module.exports = (function() {
             watch: [config.server]
         };
     }
-    obj.serve = serve;
+    obj.serve = serve;            
     
     /**
      * Start BrowserSync
@@ -81,7 +82,7 @@ module.exports = (function() {
         }
 
         log('Starting BrowserSync on port ' + port);
-
+        
         // If build: watches the files, builds, and restarts browser-sync.
         // If dev: watches sass, compiles it to css, browser-sync handles reload
         if (isDev) {
@@ -112,7 +113,7 @@ module.exports = (function() {
             injectChanges: true,
             logFileChanges: true,
             logLevel: 'debug',
-            logPrefix: 'gulp-patterns',
+            logPrefix: 'browserSync',
             notify: true,
             reloadDelay: 0 //1000
         } ;
@@ -120,7 +121,16 @@ module.exports = (function() {
             options.startPath = config.specRunnerFile;
         }
 
-        browserSync(options);
+        browserSync(options);       
+    }
+    
+    /**
+     * When files change, log it
+     * @param  {Object} event - event that fired
+     */
+    function changeEvent(event) {
+        var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
+        log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
     }
     
 
