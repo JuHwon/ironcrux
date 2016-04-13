@@ -58,20 +58,20 @@ gulp.task('tslint-server', function() {
 });
 
 
-gulp.task('tslint-test', function() {
-    return gulp.src('./test/**/*.ts')
-        .pipe($.tslint())
-        .pipe($.tslint.report('verbose'))
-        .on('error', helper.errorHandler('TS LINT Client'));
-});
+// gulp.task('tslint-test', function() {
+//     return gulp.src('./test/**/*.ts')
+//         .pipe($.tslint())
+//         .pipe($.tslint.report('verbose'))
+//         .on('error', helper.errorHandler('TS LINT Client'));
+// });
 
-gulp.task('tscompile-test', ['tslint-server'], function() {
-    var tsProject = $.typescript.createProject('./test/' + 'tsconfig.json');
-    var srcMapsOptions = {
-        sourceRoot: function(file){ return file.cwd + '/' + config.server; }
-    };
-    return gulp.src('./test/**/*.ts')
-        .pipe($.typescript(tsProject))
-        .on('error', helper.errorHandler('TS Compile Test'))
-        .pipe(gulp.dest('./test/'));
-});
+// gulp.task('tscompile-test', ['tslint-server'], function() {
+//     var tsProject = $.typescript.createProject('./test/' + 'tsconfig.json');
+//     var srcMapsOptions = {
+//         sourceRoot: function(file){ return file.cwd + '/' + config.server; }
+//     };
+//     return gulp.src('./test/**/*.ts')
+//         .pipe($.typescript(tsProject))
+//         .on('error', helper.errorHandler('TS Compile Test'))
+//         .pipe(gulp.dest('./test/'));
+// });

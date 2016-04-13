@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server/app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha src/server/**/*.spec.js"
   },
   "repository": {
     "type": "git",

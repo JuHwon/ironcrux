@@ -1,25 +1,25 @@
 'use strict';
 
-import chai = require('chai');
-import * as supertest from 'supertest';
+import { expect } from 'chai';
 import request = require('supertest');
-var expect = chai.expect;
-
-var api = require('../src/server/app.js');
+const srv: any = require('./app');
 
 describe('node server', function() {
+    var app: any;
     
-    it('sends http status 200', (done) => {
-        var app = api;
-        request(app.listen())        
+    beforeEach(() => {
+       app = app = srv.listen();
+    });
+    
+    it('sends http status 200', (done) => {        
+        request(app)        
             .get('/')
             .expect(200)
             .end(done);
     });
     
     it('has set X-Response-Time', (done) => {
-        var app = api;
-        request(app.listen())        
+        request(app)        
             .get('/')
             .expect((res: any) => {
                 if (res.header['x-response-time'] === undefined) {
