@@ -4,11 +4,11 @@ import { expect } from 'chai';
 import request = require('supertest');
 const srv: any = require('./app');
 
-describe('node server', function() {
+describe('node server', function() {    
     var app: any;
     
     beforeEach(() => {
-       app = app = srv.listen();
+        app = srv.listen();
     });
     
     it('sends http status 200', (done) => {        
@@ -22,9 +22,7 @@ describe('node server', function() {
         request(app)        
             .get('/')
             .expect((res: any) => {
-                if (res.header['x-response-time'] === undefined) {
-                    throw new Error('x-response-time not set');
-                }
+                expect(res.header['x-response-time']).exist;
             })
             .end(done);
     });

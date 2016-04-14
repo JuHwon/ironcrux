@@ -30,6 +30,13 @@ switch (environment) {
         break;
 }
 
-app.listen(port, function() {
-   console.log(`Koa server listening on port ${port}...`);
+app.on('error', (err: Error) => {
+   console.log(err);
+   console.log('Koa server error occurred.'); 
 });
+
+if (!module.parent) {
+    app.listen(port, function() {
+        console.log(`Koa server listening on port ${port}...`);
+    });
+}
