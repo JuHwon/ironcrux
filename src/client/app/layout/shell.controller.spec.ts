@@ -1,26 +1,16 @@
 var expect = chai.expect;
 
+var controller: app.layout.ShellController;
+var $controller: angular.IControllerService;
+var $rootScope: angular.IRootScopeService;
+var $timeout: angular.ITimeoutService;  
+
 describe('ShellController', function() {
-    var controller: app.layout.ShellController;
-    var $controller: angular.IControllerService;
-    var $rootScope: angular.IRootScopeService;
-    var $timeout: angular.ITimeoutService;   
-
-    // beforeEach(function() {
-    //     bard.appModule('app.layout', bard.fakeToastr);
-    //     bard.inject(this, '$controller', '$rootScope', '$timeout');
-    // });
-
+     
     beforeEach(() => {
         bard.appModule('app.layout', bard.fakeToastr);
-        inject((_$rootScope_: angular.IRootScopeService,
-        _$controller_: angular.IControllerService,
-        _$timeout_: angular.ITimeoutService) => {
-            $controller = _$controller_;
-            $rootScope = _$rootScope_;
-            $timeout = _$timeout_;           
-        });       
-    });
+        bard.inject(this, '$controller', '$rootScope', '$timeout');
+    });    
     
     beforeEach(() => {
         var $scope = $rootScope.$new();        
