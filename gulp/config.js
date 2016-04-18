@@ -6,6 +6,7 @@ module.exports = (function() {
     var server = './src/server/';
     var ngApp = client + 'app/';
     var temp = './.tmp/';
+    var report = './report/';
     var src = 'src/';
     
     var config = {
@@ -41,6 +42,18 @@ module.exports = (function() {
         clientHtml: [
             client + '**/*.html'
         ],       
+        htmltemplates: ngApp + '**/*.html',
+        /**
+         * template cache
+         */
+        templateCache: {
+            file: 'templates.js',
+            options: {
+                module: 'app.core',
+                root: 'app/',
+                standalone: false
+            }
+        },
         
         bower: {
             json: require('../bower.json'),
@@ -60,13 +73,21 @@ module.exports = (function() {
          * specs.html, our HTML spec runner
          */
         specRunner: client + 'sepcs.html',
-        specRunnerFile: 'sepcs.html'
+        specRunnerFile: 'sepcs.html',
+        serverIntegrationSpecs: [
+            client + '/tests/server-integration/**/*.spec.js'
+        ]
     };
     
     /**
      * wiredep and bower settings
      */
     config.getWiredepDefaultOptions = getWiredepDefaultOptions;
+    
+    /**
+     * karma settings
+     */
+    config.karma = getKarmaOptions();
     
     return config;
     
@@ -80,5 +101,33 @@ module.exports = (function() {
         };
         return options;
     };
+    
+    function getKarmaOptions() {
+        var wiredep = require('wiredep');
+        var bowerFiles = wiredep({ devDependencies: true })['js'];
+        var options = {
+            files: [].concat(
+                bowerFiles,
+                client + 'test-helpers/*.js',
+                ngApp + '**/*.module.js',
+                ngApp + '**/*.js',
+                temp + config.templateCache.file,
+                config.serverIntegrationSpecs
+            ),
+            exclude: [],
+            coverage: {
+                dir: report + 'coverage',
+                reporters: [
+                    // reporters not supporting the `file` property
+                    { type: 'html', subdir: 'report-html' },
+                    { type: 'lcov', subdir: 'report-lcov' },
+                    { type: 'text-summary' } //, subdir: '.', file: 'text-summary.txt'}
+                ]
+            },
+            preprocessors: {}
+        };
+        options.preprocessors[ngApp + '**/!(*.spec)+(.js)'] = ['coverage'];
+        return options;
+    }
     
 })();

@@ -3,7 +3,7 @@ module.exports = function (wallaby) {
   return {
     files: [
       'src/server/**/*.ts',
-      'src/client/**/*.html', // required because your server tests request pages
+      'src/client/**/*.html', // required because server tests request pages
       '!src/**/*.spec.ts'
     ],
     tests: [

@@ -1,9 +1,9 @@
 namespace app.core {
     'use strict';
 
-    angular.module('app.core', [
-        'common.logger',
+    angular.module('app.core', [        
         'ngSanitize',
-        'ui.router'
+        'ui.router',
+        'common.logger'
     ]);
 }
