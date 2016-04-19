@@ -1,6 +1,6 @@
 # ironcrux
 
-**AngularJS / NodeJS Application in TypeScript**
+**AngularJS / NodeJS Boilerplate Application in TypeScript**
 
 > The structure of the application is influenced by the [HotTowel-Angular](https://github.com/johnpapa/generator-hottowel) and the [gulp-angular](https://github.com/Swiip/generator-gulp-angular) skeleton.
 
@@ -28,7 +28,7 @@
 1. Download the repository 
 
     ```bash
-    git clone git@github.com:JuHwon/ironcrux.git
+    git clone git@github.com:JuHwon/ironcrux.git && cd ironcrux
     ```
 2. Install project dependencies
 

@@ -1,27 +1,44 @@
-module.exports = function (wallaby) {
+var wiredep = require('wiredep');
+var angularTemplatePreprocessor = require('wallaby-ng-html2js-preprocessor');
 
-  return {
-    files: [
-      { pattern: 'bower_components/angular/angular.js', instrument: false },
-      { pattern: 'bower_components/angular-mocks/angular-mock.js', instrument: false },
-      { pattern: 'bower_components/angular-ui-router/release/angular-ui-router.js', instrument: false },
-      { pattern: 'node_modules/chai/chai.js', instrument: false },
-      { pattern: 'bower_components/bardjs/dist/bard.js', instrument: false },
-      '!src/client/**/*.spec.ts',
-      'src/client/app/**/*.html',
-      { pattern: 'src/client/**/*.ts', load: true }      
-    ],
-    tests: [
-      { pattern: 'src/client/**/*.spec.ts', load: true }
-    ],
+module.exports = function(wallaby) {
 
-    testFramework: 'mocha',
-    
-    compilers: {
-      '**/*.ts': wallaby.compilers.typeScript({
-        target: 'es5'
-      })
-    }
+    return {
+        files: wiredep({ 
+            devDependencies: true, 
+            directory: './bower_components/',
+            ignorePath: './..'
+        })['js'].map(function(dep) {
+            return { pattern: dep, instrument: false }
+        }).concat([
+            // test libs
+            { pattern: 'node_modules/chai/chai.js', instrument: false },
+            { pattern: 'node_modules/sinon/pkg/sinon.js', instrument: false },
+            { pattern: 'node_modules/sinon-chai/lib/sinon-chai.js', instrument: false },
 
-  };
+            // app files
+            'src/client/app/**/*.html',
+            'src/client/**/*.module.ts', // first modules
+            'src/client/**/*.ts',        // then the rest
+            '!src/client/**/*.spec.ts'
+        ]),
+        tests: [
+            'src/client/**/*.spec.ts'
+        ],
+
+        testFramework: 'mocha',
+
+        compilers: {
+            '**/*.ts': wallaby.compilers.typeScript({
+                target: 'es5'
+            })
+        },
+
+        preprocessors: {
+            '**/*.html': function(file) {
+                return angularTemplatePreprocessor.transform(file, { stripPrefix: 'src/client/', moduleName: 'app.core' })
+            }
+        }
+        ,debug: true
+    };
 };
