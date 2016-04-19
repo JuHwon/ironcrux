@@ -23,7 +23,7 @@ describe('ShellController', function() {
     });
     
     it('should show splash screen', function () {
-        expect($rootScope['hideSlpash']).not.to.be.true;
+        expect($rootScope['hideSlpash']).to.be.not.ok;
     });
 
     it('should hide splash screen after timeout', function (done) {
