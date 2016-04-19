@@ -1,5 +1,6 @@
 namespace common.logger {
     'use strict';
 
-    angular.module('common.logger', []);
+    //app.core is required because of the toastr constant
+    angular.module('common.logger', ['app.core']);
 }

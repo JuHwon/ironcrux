@@ -42,3 +42,13 @@
     ```bash
     gulp serve-dev
     ```
+    
+## Manual
+
+### Add new typings
+
+```bash
+typings install koa-favicon --ambient --save
+```
+    
+       

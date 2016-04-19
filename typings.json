@@ -9,6 +9,7 @@
     "chai": "registry:dt/chai#3.4.0+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160316155526",
     "koa": "registry:dt/koa#2.0.0+20160317120654",
+    "koa-favicon": "registry:dt/koa-favicon#2.0.0+20160406115540",
     "koa-router": "registry:dt/koa-router#7.0.0+20160314083221",
     "koa-static": "registry:dt/koa-static#2.0.0+20160401073454",
     "mocha": "registry:dt/mocha#2.2.5+20160317120654",

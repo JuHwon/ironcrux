@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JuHwon/ironcrux#readme",
   "dependencies": {
     "koa": "^2.0.0",
+    "koa-favicon": "^1.2.1",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
     "moment": "^2.12.0",
