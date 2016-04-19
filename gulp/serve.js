@@ -17,6 +17,14 @@ gulp.task('serve-dev', ['build', 'watch'], function() {
     serve(true /*isDev*/);
 });
 
+/**
+ * serve the spec runner
+ */
+gulp.task('serve-specs',['build-specs', 'watch'], function() {
+    helper.log('Running the spec runner...'); 
+    serve(true, true);
+});
+
 
 
 /**

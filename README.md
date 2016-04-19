@@ -34,7 +34,7 @@
 
     ```bash
     npm install
-    typings install
+    typings install --ambient
     bower install
     ```
 3. Run application

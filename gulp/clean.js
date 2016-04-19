@@ -1,13 +1,42 @@
 'use strict';
 var gulp = require('gulp');
 var helper = require('./helper');
+var del = require('del');
+var $ = require('gulp-load-plugins')();
+var config = require('./config');
+
+/**
+ * Remove all files from the build, temp and reports folders
+ * @param {Function} done - callback when complete
+ */
+gulp.task('clean', function(done) {
+    var files = [].concat(
+        config.temp,
+        config.build,
+        config.report
+    );
+    clean(files, done);
+});
 
 /**
  * Remove all js and html from the build and temp folders
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-code', function(done) {
-    //TODO: impl clean-code gulp task
-    helper.log("The task `clean-code` is not implemented yet.");
-    done();
+    var files = [].concat(
+        config.temp + '**/*.js',
+        config.build + '**/*.js',
+        config.build + '**/*.html'
+    );
+    clean(files, done);
 });
+
+/**
+ * Delete all files in a given path
+ * @param {Array} path - array of paths to delete
+ * @param {Function} done - callback when complete
+ */
+function clean(path, done) {
+    helper.log('Cleaning:\n\t' + $.util.colors.magenta(path.join('\n\t')));
+    del(path).then(function() { done(); });
+}

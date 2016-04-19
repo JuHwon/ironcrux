@@ -7,7 +7,7 @@ var config = require('./config');
 var args = require('yargs').argv;
 
 // Build angular template cache from the existing html templates
-gulp.task('templatecache', ['clean-code'], function(done) {
+gulp.task('templatecache', ['clean-code'], function() {
      helper.log('Creating an AngularJS $templateCache');
 
     return gulp

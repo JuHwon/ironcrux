@@ -5,14 +5,19 @@ module.exports = (function() {
     var client = './src/client/';
     var server = './src/server/';
     var ngApp = client + 'app/';
-    var temp = './.tmp/';
+    var temp = './tmp/';
+    var build = './build/';
     var report = './report/';
     var src = 'src/';
+    
+    var nodeModules = './node_modules/';
     
     var config = {
         client: client,
         server: server,
         temp: temp,
+        build: build,
+        report: report,
         index: client + 'index.html',
         source: src,
         
@@ -72,8 +77,19 @@ module.exports = (function() {
         /**
          * specs.html, our HTML spec runner
          */
-        specRunner: client + 'sepcs.html',
-        specRunnerFile: 'sepcs.html',
+        testlibraries: [
+            nodeModules + 'mocha/mocha.js',
+            nodeModules + 'chai/chai.js',
+            nodeModules + 'sinon/pkg/sinon.js',
+            nodeModules + 'mocha-clean/index.js',
+            nodeModules + 'sinon-chai/lib/sinon-chai.js'
+        ],
+        specRunner: client + 'specs.html',
+        specRunnerFile: 'specs.html',
+        specHelpers: [
+            // client + 'test-helpers/*.js'
+        ],
+        specs: [ ngApp + '**/*.spec.js' ],
         serverIntegrationSpecs: [
             client + '/tests/server-integration/**/*.spec.js'
         ]
