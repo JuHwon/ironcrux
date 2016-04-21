@@ -30,10 +30,15 @@
   "overrides": {
     "bootstrap": {
       "main": [
-        "less/bootstrap.less",
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
+    },
+    "morrisjs": {
+      "dependencies": {
+        "jquery": ">= 2.1.0",
+        "raphael": ">= 2.0"
+      }
     }
   }
 }

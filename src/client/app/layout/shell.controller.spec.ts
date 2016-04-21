@@ -4,12 +4,13 @@ var controller: app.layout.ShellController;
 var $controller: angular.IControllerService;
 var $rootScope: angular.IRootScopeService;
 var $timeout: angular.ITimeoutService;  
+var config: any;
 
 describe('ShellController', function() {
      
     beforeEach(() => {
         bard.appModule('app.layout', bard.fakeToastr);
-        bard.inject(this, '$controller', '$rootScope', '$timeout');
+        bard.inject(this, '$controller', '$rootScope', '$timeout', 'config');
     });    
     
     beforeEach(() => {
@@ -32,6 +33,10 @@ describe('ShellController', function() {
             done();
         }, 1000);
         $timeout.flush();
+    });
+    
+    it('should have appTitle set', () => {
+        expect(controller.appTitle).to.be.eq(config.appTitle); 
     });
 });
 
