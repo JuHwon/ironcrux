@@ -3,13 +3,14 @@ namespace app.layout {
     
     class NavbarHeader implements ng.IComponentOptions {
         public bindings: any;
-        public controller:any;
+        public controller: any;
         public controllerAs: string;    
-        public templateUrl:string;
+        public templateUrl: string;
         
         constructor() {
             this.bindings = {
-                title: '@'
+                title: '@',
+                toggleTarget: '@'
             };
             this.controllerAs = 'vm';
             this.templateUrl = 'app/layout/navbarHeader.html';
