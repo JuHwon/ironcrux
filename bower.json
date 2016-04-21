@@ -19,11 +19,21 @@
     "jquery": "^2.2.3",
     "angular-sanitize": "^1.5.3",
     "angular-ui-router": "^0.2.18",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "startbootstrap-sb-admin-2": "^1.0.8"
   },
   "devDependencies": {
     "bardjs": "^0.1.8",
     "angular-mocks": "^1.5.3",
     "sinon": "^1.17.3"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
   }
 }
