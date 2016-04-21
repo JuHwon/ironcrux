@@ -28,8 +28,7 @@ switch (environment) {
         console.log('*** DEV ***');
         console.log('rootDir: ' + rootDir);
         app.use(convert(serve(path.join(rootDir, './src/client'))));
-        app.use(convert(serve(path.join(rootDir, './'))));
-        app.use(convert(serve(path.join(rootDir, './tmp'))));
+        app.use(convert(serve(path.join(rootDir, './'), { hidden: true })));
         break;
 }
 
