@@ -32,6 +32,19 @@ gulp.task('clean-code', function(done) {
 });
 
 /**
+ * Remove all css from the build and temp folders
+ * @param  {Function} done - callback when complete
+ */
+gulp.task('clean-styles', function(done) {
+    var files = [].concat(
+        config.temp + '**/*.css',
+        config.build + '**/*.css'
+    );
+    clean(files, done);
+});
+
+
+/**
  * Delete all files in a given path
  * @param {Array} path - array of paths to delete
  * @param {Function} done - callback when complete

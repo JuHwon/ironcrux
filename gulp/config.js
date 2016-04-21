@@ -21,6 +21,8 @@ module.exports = (function() {
         index: client + 'index.html',
         source: src,
         
+        css: temp + 'styles.css',
+        
         allTs: [
             client + '**/*.ts',
             server + '**/*.ts'

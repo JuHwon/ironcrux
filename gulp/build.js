@@ -23,9 +23,16 @@ gulp.task('build', ['optimize'], function() {
     // $.notify(msg);
 });
 
-gulp.task('optimize', ['tscompile', 'inject', 'test'], function(done) {
+/**
+ * Optimize all files, move to a build folder,
+ * and inject them into the new index.html
+ * @return {Stream}
+ */
+gulp.task('optimize', ['inject', 'test'], function(done) {
     helper.log($.util.colors.red("The task `optimize` is not implemented yet."));
     done();
+    
+    helper.log('Optimizing the js, css and html');
 });
 
 
@@ -57,7 +64,14 @@ gulp.task('build-specs', ['templatecache', 'tscompile'], function() {
 
 
 
-gulp.task('inject', ['inject-js']);
+gulp.task('inject', ['inject-js', 'styles', 'templatecache'], function() {
+    helper.log('Injecting CSS files into html.');
+    
+    return gulp 
+        .src(config.index)
+        .pipe(inject(config.css))
+        .pipe(gulp.dest(config.client));        
+});
 
 gulp.task('inject-js', ['tscompile-client', 'templatecache'], function() {
     helper.log('Injecting JavaScript files into the html.');

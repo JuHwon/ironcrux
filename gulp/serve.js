@@ -13,7 +13,7 @@ var port = process.env.PORT || config.defaultPort;
  * --debug-brk or --debug
  * --nosync
  */
-gulp.task('serve-dev', ['build', 'watch'], function() {
+gulp.task('serve-dev', ['inject', 'tscompile-server', 'watch'], function() {
     serve(true /*isDev*/);
 });
 
