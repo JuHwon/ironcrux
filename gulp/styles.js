@@ -6,8 +6,8 @@ var $ = require('gulp-load-plugins')();
 var config = require('./config');
 
 
-gulp.task('styles', ['clean-styles'], function(done) {
-    
+gulp.task('styles', ['clean-styles', 'fonts'], function(done) {
+    helper.log('compiling all scss files');
     var sassOptions = {
         indentWidth: 4,
         outputStyle: 'expanded',
@@ -21,4 +21,9 @@ gulp.task('styles', ['clean-styles'], function(done) {
         .pipe($.autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
         .pipe(gulp.dest(config.temp));
         
+});
+
+gulp.task('fonts', function(done) {
+    helper.log($.util.colors.blue('gulp task `fonts` not implemented yet'));
+    done();
 });

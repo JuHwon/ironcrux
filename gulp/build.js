@@ -13,14 +13,13 @@ var args = require('yargs').argv;
  */
 gulp.task('build', ['optimize'], function() {   
     helper.log('Building everything');
-    // var msg = {
-    //     title: 'gulp build',
-    //     subtitle: 'Deployed to the build folder',
-    //     message: 'Running `gulp serve-build`'
-    // };
+    var msg = {
+        title: 'gulp build',
+        subtitle: 'Deployed to the build folder'
+    };
     del(config.temp);
-    //helper.log(msg);
-    // $.notify(msg);
+    helper.log(msg);
+    $.notify(msg);
 });
 
 /**
@@ -29,10 +28,41 @@ gulp.task('build', ['optimize'], function() {
  * @return {Stream}
  */
 gulp.task('optimize', ['inject', 'test'], function(done) {
-    helper.log($.util.colors.red("The task `optimize` is not implemented yet."));
-    done();
-    
     helper.log('Optimizing the js, css and html');
+    
+    var templatecache = config.temp + config.templateCache.file;
+    
+    var cssFilter = $.filter('**/*.css', { restore: true });
+    var jsAppFilter = $.filter('**/app.js', { restore: true });
+    var jslibFilter = $.filter('**/lib.js', { restore: true });    
+    
+    return gulp
+        .src(config.index)
+        .pipe($.plumber())
+        .pipe(inject(templatecache, 'templates'))
+        .pipe($.useref({ searchPath: './' }))
+        
+        //minify css
+        .pipe(cssFilter)
+        .pipe($.cleanCss({ keepSpecialComments: 0 }))
+        .pipe(cssFilter.restore)
+               
+        //minify app js
+        .pipe(jsAppFilter)      
+        .pipe($.uglify())
+        .pipe(getHeader())
+        .pipe(jsAppFilter.restore)  
+        
+        //minify vendor js
+        .pipe(jslibFilter)
+        .pipe($.uglify())
+        .pipe(jslibFilter.restore)
+        
+        //TODO: consider using gulp-rev-all here
+        
+        //output
+        .pipe(gulp.dest(config.build));
+        
 });
 
 
@@ -118,3 +148,26 @@ function orderSrc (src, order) {
         .src(src)
         .pipe($.if(order, $.order(order)));
 }
+
+
+/**
+ * Format and return the header for files
+ * @return {String}           Formatted file header
+ */
+function getHeader() {
+    var pkg = require('../package.json');
+    var template = ['/**',
+                    ' * <%= pkg.name %> - <%= pkg.description %>',
+                    ' * @authors <%= pkg.authors %>',
+                    ' * @version v<%= pkg.version %>',
+                    ' * @link <%= pkg.homepage %>',
+                    //' * @license <%= pkg.license %>',
+                    ' */',
+                    ''
+                   ].join('\n');
+    return $.header(template, {
+        pkg: pkg
+    });
+}
+
+
