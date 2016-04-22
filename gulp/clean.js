@@ -43,6 +43,14 @@ gulp.task('clean-styles', function(done) {
     clean(files, done);
 });
 
+/**
+ * Remove all fonts from the build folder
+ * @param  {Function} done - callback when complete
+ */
+gulp.task('clean-fonts', function(done) {
+    clean([config.build + 'fonts/**/*.*'], done);
+});
+
 
 /**
  * Delete all files in a given path

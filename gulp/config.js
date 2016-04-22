@@ -10,6 +10,12 @@ module.exports = (function() {
     var report = './report/';
     var src = 'src/';
     
+    var bower = {
+        json: require('../bower.json'),
+        directory: './bower_components/',
+        ignorePath: './..'
+    };
+    
     var nodeModules = './node_modules/';
     
     var config = {
@@ -46,6 +52,10 @@ module.exports = (function() {
             client + '*.scss'
         ],
         
+        fonts: [
+            bower.directory + 'font-awesome/fonts/**/*.*'
+        ],
+        
         clientHtml: [
             client + '**/*.html'
         ],       
@@ -62,11 +72,7 @@ module.exports = (function() {
             }
         },
         
-        bower: {
-            json: require('../bower.json'),
-            directory: './bower_components/',
-            ignorePath: './..'
-        },
+        bower: bower,
                 
         nodeServer: server + 'app.js',
         defaultPort: '8001',

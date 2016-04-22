@@ -23,7 +23,10 @@ gulp.task('styles', ['clean-styles', 'fonts'], function(done) {
         
 });
 
-gulp.task('fonts', function(done) {
-    helper.log($.util.colors.blue('gulp task `fonts` not implemented yet'));
-    done();
+gulp.task('fonts', ['clean-fonts'], function() {
+    helper.log('Copying fonts');
+    
+    return gulp
+        .src(config.fonts)
+        .pipe(gulp.dest(config.build + 'fonts'));
 });

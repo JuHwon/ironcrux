@@ -11,7 +11,7 @@ var args = require('yargs').argv;
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize'], function() {   
+gulp.task('build', ['optimize', 'fonts'], function() {   
     helper.log('Building everything');
     var msg = {
         title: 'gulp build',
