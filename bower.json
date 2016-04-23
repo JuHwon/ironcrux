@@ -21,7 +21,8 @@
     "toastr": "^2.1.2",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
-    "angular-component-router": "^0.2.1"
+    "angular-component-router": "^0.2.1",
+    "metisMenu": "^2.5.0"
   },
   "devDependencies": {
     "bardjs": "^0.1.8",
