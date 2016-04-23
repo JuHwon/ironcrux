@@ -7,17 +7,23 @@ namespace app.core {
         appTitle: 'ironcrux'
     };
 
-    core
+    core        
+        .config(toastrConfig)
+        .config(routerConfig)
         .value('config', config)
-        .config(toastrConfig);
+        .value('$routerRootComponent', 'shell');
 
     /////////////////////
 
     toastrConfig.$inject = ['toastr'];
-    /* @ngInject */
     function toastrConfig(toastr: Toastr) {
         toastr.options.timeOut = 4000;
         toastr.options.positionClass = 'toast-bottom-right';
+    }
+    
+    routerConfig.$inject = ['$locationProvider'];
+    function routerConfig($locationProvider: ng.ILocationProvider) {
+        $locationProvider.html5Mode(true);
     }
 
 }

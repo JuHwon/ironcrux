@@ -3,7 +3,7 @@ namespace app.core {
 
     angular.module('app.core', [        
         'ngSanitize',
-        'ui.router',
+        'ngComponentRouter',
         'common.logger'
     ]);
 }

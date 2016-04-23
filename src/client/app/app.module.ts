@@ -3,6 +3,7 @@ namespace app {
 
     angular.module('app', [
         'app.core',
-        'app.layout'
+        'app.layout',
+        'app.dashboard'
     ]);
 }

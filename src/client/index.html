@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
-<head>
-        <style>
+<head>    
+    <style>
         /* This helps the ng-show/ng-hide animations start at the right place. */
         /* Since Angular has this but needs to load, this gives us the class early. */
         .ng-hide { display: none!important; }
@@ -51,7 +51,7 @@
     <title ng-bind="title">ironcrux</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta charset="utf8" />
-    
+    <base href="/">
     <!-- build:css styles/lib.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="./bower_components/toastr/toastr.css" />
@@ -70,7 +70,7 @@
 </head>
 <body>
     
-    <section ng-include="'app/layout/shell.html'"></section>
+    <shell></shell>
     <div id="splash-page" ng-cloak="" ng-show="!hideSlpash">
         <div class="page-splash-message">Loading ironcrux...</div>
     </div>
@@ -80,9 +80,10 @@
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/jquery/dist/jquery.js"></script>
     <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="./bower_components/toastr/toastr.js"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/angular-component-router/angular_1_router.js"></script>
+    <script src="./bower_components/angular-component-router/ng_route_shim.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -96,6 +97,8 @@
     
     <script src="/src/client/app/core/core.module.js"></script>
     
+    <script src="/src/client/app/dashboard/dashboard.module.js"></script>
+    
     <script src="/src/client/app/layout/layout.module.js"></script>
     
     <script src="/src/client/app/common/logger/logger.js"></script>
@@ -104,11 +107,15 @@
     
     <script src="/src/client/app/core/constant.js"></script>
     
+    <script src="/src/client/app/dashboard/dashboard.component.js"></script>
+    
     <script src="/src/client/app/layout/navbarHeader.component.js"></script>
     
     <script src="/src/client/app/layout/navbarSide.component.js"></script>
     
     <script src="/src/client/app/layout/navbarTop.component.js"></script>
+    
+    <script src="/src/client/app/layout/shell.component.js"></script>
     
     <script src="/src/client/app/layout/shell.controller.js"></script>
     
