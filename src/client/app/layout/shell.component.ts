@@ -1,11 +1,11 @@
 namespace app.layout {
     'use strict';
     
-    class Shell implements ng.IComponentOptions {
-        public bindings: any;
+    class Shell implements ng.IComponentOptions {        
         public controller: any = ShellController;
         public templateUrl: string = 'app/layout/shell.html';
-        public controllerAs: string = 'vm';  
+        public controllerAs: string = 'vm';
+        public bindings: any;
         
         public $routeConfig: Array<ng.RouteDefinition> = [
             { path: '/', name:'Dashboard', component: 'dashboard', useAsDefault: true }

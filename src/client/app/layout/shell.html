@@ -1,18 +1,17 @@
 <div ng-controller="ShellController as vm" id="shell">
     <div id="wrapper">
-    <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                        
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">                        
             <navbar-header title="{{vm.appTitle}}" toggle-target=".navbar-collapse"></navbar-header>
             
             <navbar-top></navbar-top>           
 
-            <navbar-side toggle-class="navbar-collapse"></navbar-side>
-            
+            <navbar-side toggle-class="navbar-collapse"></navbar-side>            
         </nav>
-    
-        <div id="page-wrapper">    
+        
+        <!-- Page -->
+        <section id="page-wrapper">    
             <ng-outlet></ng-outlet>
-        </div>
+        </section>
     </div>
 </div>
