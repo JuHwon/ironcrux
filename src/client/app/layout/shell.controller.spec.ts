@@ -1,12 +1,12 @@
 var expect = chai.expect;
 
-var controller: app.layout.ShellController;
 var $controller: angular.IControllerService;
 var $rootScope: angular.IRootScopeService;
 var $timeout: angular.ITimeoutService;  
 var config: any;
 
 describe('ShellController', function() {
+    var shellController: app.layout.ShellController;
      
     beforeEach(() => {
         bard.appModule('app.layout', bard.fakeToastr);
@@ -15,12 +15,12 @@ describe('ShellController', function() {
     
     beforeEach(() => {
         var $scope = $rootScope.$new();        
-        controller = <app.layout.ShellController>$controller('ShellController', {$scope: $scope});
+        shellController = <app.layout.ShellController>$controller('ShellController', {$scope: $scope});
         $rootScope.$apply();
     });
     
     it('should be defined', () => {
-        expect(controller).to.be.ok;
+        expect(shellController).to.be.ok;
     });
     
     it('should show splash screen', function () {
@@ -36,7 +36,11 @@ describe('ShellController', function() {
     });
     
     it('should have appTitle set', () => {
-        expect(controller.appTitle).to.be.eq(config.appTitle); 
+        expect(shellController.appTitle).to.be.eq(config.appTitle); 
+    });
+    
+    it('should have set appTitle to $rootScpope', () => {
+       expect($rootScope['appTitle']).to.be.eq(config.appTitle); 
     });
 });
 

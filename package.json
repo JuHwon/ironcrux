@@ -27,6 +27,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.7.4",
     "browser-sync": "^2.11.2",
     "chai": "^3.5.0",
     "del": "^2.2.0",

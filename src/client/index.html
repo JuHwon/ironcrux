@@ -48,7 +48,7 @@
             padding: 0;
         }
     </style>
-    <title ng-bind="title">ironcrux</title>
+    <title ng-bind="appTitle"></title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta charset="utf8" />
     <base href="/">
@@ -97,19 +97,31 @@
     
     <script src="/src/client/app/common/logger/logger.module.js"></script>
     
+    <script src="/src/client/app/common/router/router.module.js"></script>
+    
     <script src="/src/client/app/core/core.module.js"></script>
     
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     
+    <script src="/src/client/app/forms/forms.module.js"></script>
+    
     <script src="/src/client/app/layout/layout.module.js"></script>
     
     <script src="/src/client/app/common/logger/logger.js"></script>
+    
+    <script src="/src/client/app/common/router/router-helper.service.js"></script>
     
     <script src="/src/client/app/core/config.js"></script>
     
     <script src="/src/client/app/core/constant.js"></script>
     
     <script src="/src/client/app/dashboard/dashboard.component.js"></script>
+    
+    <script src="/src/client/app/dashboard/dashboard.route.js"></script>
+    
+    <script src="/src/client/app/forms/forms.component.js"></script>
+    
+    <script src="/src/client/app/forms/forms.route.js"></script>
     
     <script src="/src/client/app/layout/navbarHeader.component.js"></script>
     

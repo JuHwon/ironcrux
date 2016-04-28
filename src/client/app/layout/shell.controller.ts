@@ -4,16 +4,19 @@ namespace app.layout {
     export class ShellController {
         public appTitle: string;
         
-        static $inject: Array<string> = ['$rootScope', '$timeout', 'config', 'logger', '$'];        
-        constructor(private $rootScope: any,
+        static $inject: Array<string> = ['$', '$rootScope', '$timeout', 'config', 'logger'];        
+        constructor(private $: JQueryStatic,
+            private $rootScope: any,
             private $timeout: ng.ITimeoutService,
             private config: { appTitle: string },
-            private logger: common.logger.ILogger,
-            private $: any) {                  
-            this.appTitle = config.appTitle;     
+            private logger: common.logger.ILogger
+            ) {                  
+            this.appTitle = config.appTitle;    
+            $rootScope.appTitle = this.appTitle; 
             this.hideSplash();
             this.setSizes($);
             this.logger.success(`${config.appTitle} loaded!`);
+
         }
         
         busyMessage = 'Please wait...';

@@ -15,6 +15,7 @@ module.exports = function(wallaby) {
             { pattern: 'node_modules/chai/chai.js', instrument: false },
             { pattern: 'node_modules/sinon/pkg/sinon.js', instrument: false },
             { pattern: 'node_modules/sinon-chai/lib/sinon-chai.js', instrument: false },
+            { pattern: 'node_modules/babel-polyfill/browser.js', instrument: false},
 
             // app files
             'src/client/app/**/*.html',
@@ -36,9 +37,8 @@ module.exports = function(wallaby) {
 
         preprocessors: {
             '**/*.html': function(file) {
-                return angularTemplatePreprocessor.transform(file, { stripPrefix: 'src/client/', moduleName: 'app.core' })
+                return angularTemplatePreprocessor.transform(file, { stripPrefix: 'src/client/', moduleName: 'app' })
             }
         }
-        ,debug: true
     };
 };

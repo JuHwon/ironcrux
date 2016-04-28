@@ -4,6 +4,7 @@ namespace app {
     angular.module('app', [
         'app.core',
         'app.layout',
-        'app.dashboard'
+        'app.dashboard',
+        'app.forms'
     ]);
 }
