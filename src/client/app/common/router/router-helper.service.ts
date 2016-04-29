@@ -3,6 +3,7 @@ namespace common.router {
     
     export interface IAppRouteDefinition extends ng.RouteDefinition {
         class?: string;
+        childs?: Array<IAppRouteDefinition>;
     }
 
     export interface IRouterService {
@@ -11,7 +12,7 @@ namespace common.router {
     
     export interface IRouterServiceProvider extends ng.IServiceProvider {        
         register(routes: Array<IAppRouteDefinition>): void;
-    }
+    }   
     
     export class RouterHelperProvider implements IRouterServiceProvider {  
         constructor() {                        
@@ -19,13 +20,22 @@ namespace common.router {
         }
         
         private routes: Array<IAppRouteDefinition> = [];
+        private componentRoutes: Array<ng.RouteDefinition> = [];
         
-        public register(routes: Array<IAppRouteDefinition>) : void {
-            this.routes = this.routes.concat(routes);
+        public register(routes: Array<IAppRouteDefinition>) : void {            
+            routes.forEach(route => {
+                if (!route.childs || !route.childs.length) {
+                    this.componentRoutes.push(route); 
+                } else {
+                    route.path = '#';
+                    this.componentRoutes = this.componentRoutes.concat(route.childs);
+                }
+            });  
+            this.routes = this.routes.concat(routes);         
         }
                         
         public $get($rootRouter: ng.Router): IRouterService {
-            $rootRouter.config(this.routes);
+            $rootRouter.config(this.componentRoutes);
             return {
                 routes: this.routes
             };

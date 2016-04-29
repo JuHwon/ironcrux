@@ -5,6 +5,7 @@ namespace app {
         'app.core',
         'app.layout',
         'app.dashboard',
-        'app.forms'
+        'app.forms',
+        'app.uiElements'
     ]);
 }
