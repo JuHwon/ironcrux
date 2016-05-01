@@ -1,59 +1,60 @@
 {
-    "name": "ironcrux",
-    "version": "1.0",
-    "homepage": "https://github.com/JuHwon/ironcrux",
-    "authors": [
-        "JuHwon"
-    ],
-    "license": "MIT",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "typings",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "angular": "^1.5.3",
-        "jquery": "^2.2.3",
-        "angular-sanitize": "^1.5.3",
-        "toastr": "^2.1.2",
-        "bootstrap": "^3.3.6",
-        "font-awesome": "^4.6.1",
-        "angular-component-router": "^0.2.1",
-        "metisMenu": "^2.5.0",
-        "bootstrap-social": "^5.0.0",
-        "angular-morris-chart": "^1.2.0"
+  "name": "ironcrux",
+  "version": "1.0",
+  "homepage": "https://github.com/JuHwon/ironcrux",
+  "authors": [
+    "JuHwon"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "typings",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "jquery": "^2.2.3",
+    "angular-sanitize": "^1.5.3",
+    "toastr": "^2.1.2",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.1",
+    "angular-component-router": "^0.2.1",
+    "metisMenu": "^2.5.0",
+    "bootstrap-social": "^5.0.0",
+    "angular-morris-chart": "^1.2.0"
+  },
+  "devDependencies": {
+    "bardjs": "^0.1.8",
+    "angular-mocks": "^1.5.3",
+    "sinon": "^1.17.3"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
     },
-    "devDependencies": {
-        "bardjs": "^0.1.8",
-        "angular-mocks": "^1.5.3",
-        "sinon": "^1.17.3"
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
     },
-    "overrides": {
-        "bootstrap": {
-            "main": [
-                "dist/css/bootstrap.css",
-                "dist/js/bootstrap.js"
-            ]
-        },
-        "font-awesome": {
-            "main": [
-                "css/font-awesome.css"
-            ]
-        },
-        "_morris.js": "#angular-morris-chart dependency",
-        "morris.js": {
-            "_dependencies": "#overwrite since the bower package has `mocha` as dep",
-            "dependencies": {
-                "jquery": ">= 2.1.0",
-                "raphael": ">= 2.0"
-            }
-        }
-    },
-    "resolutions": {
-        "angular": "^1.5.3",
-        "font-awesome": "^4.6.1"
+    "_morris.js": "#angular-morris-chart dependency",
+    "morris.js": {
+      "_dependencies": "#overwrite since the bower package has `mocha` as dep",
+      "dependencies": {
+        "jquery": ">= 2.1.0",
+        "raphael": ">= 2.0"
+      }
     }
+  },
+  "resolutions": {
+    "angular": "^1.5.3",
+    "font-awesome": "^4.6.1",
+    "sinon": "^1.17.3"
+  }
 }
