@@ -1,12 +1,17 @@
 namespace app.layout {
     'use strict';
-
+    
+    interface AppRootScope extends ng.IScope{
+        appTitle: string;
+        hideSlpash: boolean;
+    }
+    
     export class ShellController {
         public appTitle: string;
         
         static $inject: Array<string> = ['$', '$rootScope', '$timeout', 'config', 'logger'];        
         constructor(private $: JQueryStatic,
-            private $rootScope: any,
+            private $rootScope: AppRootScope,
             private $timeout: ng.ITimeoutService,
             private config: { appTitle: string },
             private logger: common.logger.ILogger
