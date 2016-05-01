@@ -26,7 +26,8 @@ gulp.task('clean-code', function(done) {
     var files = [].concat(
         config.temp + '**/*.js',
         config.build + '**/*.js',
-        config.build + '**/*.html'
+        config.build + '**/*.html',
+        config.source + '**/*.js'
     );
     clean(files, done);
 });

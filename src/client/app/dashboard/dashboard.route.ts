@@ -1,6 +1,6 @@
 namespace app.dashboard {
   'use strict';
-  
+
   import ngr = common.router;
 
   angular.module('app.dashboard')
@@ -15,9 +15,9 @@ namespace app.dashboard {
   function getStates(): Array<ngr.IAppRouteDefinition> {
     return [
       {
-        path: '/', 
-        name:'Dashboard', 
-        component: 'dashboard', 
+        path: '/',
+        name:'Dashboard',
+        component: 'dashboard',
         useAsDefault: true,
         class: 'fa-dashboard'
       }

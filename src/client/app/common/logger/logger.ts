@@ -1,6 +1,6 @@
 namespace common.logger {
     'use strict';
-    
+
     export interface ILogger {
         info: (message: string, data?: {}, title?: string) => void;
         error: (message: string, data?: {}, title?: string) => void;
@@ -8,11 +8,11 @@ namespace common.logger {
         warning: (message: string, data?: {}, title?: string) => void;
         log: (...args: any[]) => void;
     }
-    
+
     export class Logger implements ILogger {
         static $inject: Array<string> = ['$log', 'toastr'];
         constructor(private $log: ng.ILogService, private toastr: Toastr) { }
-        
+
         // straight to console; bypass toastr
         log(...args: any[]) {
             this.$log.log(args);
@@ -38,7 +38,7 @@ namespace common.logger {
             this.$log.warn('Warning: ' + message, '\nSummary:', title, '\nDetails:', data);
         }
     }
-    
+
     angular
         .module('common.logger')
         .service('logger', Logger);

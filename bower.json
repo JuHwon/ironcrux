@@ -43,5 +43,9 @@
         "css/font-awesome.css"
       ]
     }
+  },
+  "resolutions": {
+    "angular": "^1.5.3",
+    "font-awesome": "^4.6.1"
   }
 }

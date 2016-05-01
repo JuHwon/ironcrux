@@ -55,6 +55,11 @@
   <script src="./bower_components/angular-component-router/angular_1_router.js"></script>
   <script src="./bower_components/angular-component-router/ng_route_shim.js"></script>
   <script src="./bower_components/metisMenu/dist/metisMenu.js"></script>
+  <script src="./bower_components/eve/eve.js"></script>
+  <script src="./bower_components/raphael/raphael.min.js"></script>
+  <script src="./bower_components/mocha/mocha.js"></script>
+  <script src="./bower_components/morris.js/morris.js"></script>
+  <script src="./bower_components/angular-morris-chart/src/angular-morris-chart.min.js"></script>
   <script src="./bower_components/angular-mocks/angular-mocks.js"></script>
   <script src="./bower_components/bardjs/dist/bard.js"></script>
   <script src="./bower_components/bardjs/dist/bard-ngRouteTester.js"></script>
@@ -68,6 +73,7 @@
   <script src="/src/client/app/dashboard/dashboard.module.js"></script>
   <script src="/src/client/app/forms/forms.module.js"></script>
   <script src="/src/client/app/layout/layout.module.js"></script>
+  <script src="/src/client/app/ui-elements/ui-elements.module.js"></script>
   <script src="/src/client/app/common/logger/logger.js"></script>
   <script src="/src/client/app/common/router/router-helper.service.js"></script>
   <script src="/src/client/app/core/config.js"></script>
@@ -77,16 +83,20 @@
   <script src="/src/client/app/forms/forms.component.js"></script>
   <script src="/src/client/app/forms/forms.route.js"></script>
   <script src="/src/client/app/layout/navbarHeader.component.js"></script>
-  <script src="/src/client/app/layout/navbarSide.component.js"></script>
+  <script src="/src/client/app/layout/navbarSide.directive.js"></script>
   <script src="/src/client/app/layout/navbarTop.component.js"></script>
   <script src="/src/client/app/layout/shell.component.js"></script>
   <script src="/src/client/app/layout/shell.controller.js"></script>
+  <script src="/src/client/app/ui-elements/buttons/buttons.component.js"></script>
+  <script src="/src/client/app/ui-elements/panels/panels.component.js"></script>
+  <script src="/src/client/app/ui-elements/ui-elements.route.js"></script>
   <!-- endinject -->
 
   <!-- inject:spechelpers:js -->
   <!-- endinject -->
 
   <!-- inject:specs:js -->
+  <script src="/src/client/app/dashboard/dashboard.spec.js"></script>
   <script src="/src/client/app/layout/navbarSide.spec.js"></script>
   <script src="/src/client/app/layout/shell.controller.spec.js"></script>
   <!-- endinject -->

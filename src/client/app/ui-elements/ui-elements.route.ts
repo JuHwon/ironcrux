@@ -1,7 +1,7 @@
 
 namespace app.forms {
   'use strict';
-  
+
   import ngr = common.router;
 
   angular
@@ -15,7 +15,7 @@ namespace app.forms {
   }
 
   function getStates(): Array<ngr.IAppRouteDefinition> {
-    return [    
+    return [
         {
             name: 'UI Elements',
             class: 'fa-wrench',
@@ -30,7 +30,7 @@ namespace app.forms {
                     component: 'buttons'
                 }
             ]
-            
+
         }
     ];
   }

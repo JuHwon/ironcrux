@@ -14,10 +14,10 @@ namespace app.dashboard {
             { y: '2011', a: 75, b: 65 },
             { y: '2012', a: 100, b: 90 }
         ];
-        
-        public donutData: Array<any> = [
-            { label: 'Download Sales', value: 12 }, 
-            { label: 'In-Store Sales', value: 30 }, 
+
+		public donutData: Array<any> = [
+            { label: 'Download Sales', value: 12 },
+            { label: 'In-Store Sales', value: 30 },
             { label: 'Mail-Order Sales', value: 20 }
         ];
     }

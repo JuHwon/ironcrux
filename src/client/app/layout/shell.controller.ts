@@ -1,36 +1,36 @@
 namespace app.layout {
     'use strict';
-    
-    interface AppRootScope extends ng.IScope{
+
+    interface AppRootScope extends ng.IScope {
         appTitle: string;
         hideSlpash: boolean;
     }
-    
+
     export class ShellController {
         public appTitle: string;
-        
-        static $inject: Array<string> = ['$', '$rootScope', '$timeout', 'config', 'logger'];        
+
+        static $inject: Array<string> = ['$', '$rootScope', '$timeout', 'config', 'logger'];
         constructor(private $: JQueryStatic,
             private $rootScope: AppRootScope,
             private $timeout: ng.ITimeoutService,
             private config: { appTitle: string },
             private logger: common.logger.ILogger
-            ) {                  
-            this.appTitle = config.appTitle;    
-            $rootScope.appTitle = this.appTitle; 
+            ) {
+            this.appTitle = config.appTitle;
+            $rootScope.appTitle = this.appTitle;
             this.hideSplash();
             this.setSizes($);
             this.logger.success(`${config.appTitle} loaded!`);
 
         }
-        
+
         busyMessage = 'Please wait...';
         isBusy = true;
 
         hideSplash() {
             this.$timeout(() => { this.$rootScope.hideSlpash = true; }, 1000);
         }
-        
+
         setSizes($: any) {
             var topOffset = 50;
             var height = ((window.innerHeight > 0) ? window.innerHeight : screen.height) - 1;
@@ -42,7 +42,6 @@ namespace app.layout {
                 $('#page-wrapper').css('min-height', (height) + 'px');
             }
         }
-
     }
 
     angular

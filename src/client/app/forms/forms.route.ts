@@ -1,7 +1,7 @@
 
 namespace app.forms {
   'use strict';
-  
+
   import ngr = common.router;
 
   angular
@@ -17,8 +17,8 @@ namespace app.forms {
   function getStates(): Array<ngr.IAppRouteDefinition> {
     return [
       {
-        path: '/forms', 
-        name:'Forms', 
+        path: '/forms',
+        name:'Forms',
         component: 'forms',
         class: 'fa-edit'
       }

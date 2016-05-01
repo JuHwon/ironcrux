@@ -4,8 +4,8 @@ var angularTemplatePreprocessor = require('wallaby-ng-html2js-preprocessor');
 module.exports = function(wallaby) {
 
     return {
-        files: wiredep({ 
-            devDependencies: true, 
+        files: wiredep({
+            devDependencies: true,
             directory: './bower_components/',
             ignorePath: './..'
         })['js'].map(function(dep) {
