@@ -6,7 +6,7 @@ before_script:
     - bower install
     - typings install --ambient
     - gulp build
-script: gulp test
+script: npm test
 env:
   - CXX=g++-4.8
 addons:

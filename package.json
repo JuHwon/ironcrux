@@ -5,7 +5,8 @@
   "main": "src/server/app.js",
   "scripts": {
     "test-srv": "mocha src/server/**/*.spec.js",
-    "test-srv-debug": "mocha src/server/**/*.spec.js --debug-brk"
+    "test-srv-debug": "mocha src/server/**/*.spec.js --debug-brk",
+    "test": "npm run test-srv && gulp test"
   },
   "repository": {
     "type": "git",
